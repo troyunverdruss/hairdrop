@@ -7,7 +7,8 @@ function App() {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     // Do something with the files
     acceptedFiles.forEach(file => {
-      superagent.post("http://localhost:8080").send(file).end(function (err, res) {
+      superagent.post(`http://localhost:8080/upload/${file.name}`)
+      .send(file).end(function (err, res) {
         console.log(err, res);
       })
       console.log(file);
