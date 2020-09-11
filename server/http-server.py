@@ -1,9 +1,48 @@
-from flask import Flask
-from flask import request
-from flask import make_response
+import enum
+
+from flask import Flask, make_response, request
+from sqlalchemy import Column, DateTime, Enum, String, func
+from sqlalchemy import Integer
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+
+# https://www.compose.com/articles/using-postgresql-through-sqlalchemy/
+
+db_string = f"postgres://{user}:{pw}@{url}/{db}"
+db_engine = create_engine(db_string)
+base = declarative_base()
+
+
+class EntryType(enum.Enum):
+    TEXT = 1
+    FILE = 2
+
+
+# @dataclass
+class Entry(base):
+    __tablename__ = 'entries'
+
+    id = Column(Integer, primary_key=True)
+    created = Column(DateTime, server_default=func.now())
+    type = Column(Enum(EntryType))
+    data = Column(String)
+
+
+Session = sessionmaker(db_engine)
+session = Session()
+base.metadata.create_all(db_engine)
+
+entry = Entry(type=EntryType.FILE, data="123")
+session.add(entry)
+session.commit()
+
+stuff = session.query(Entry).order_by(Entry.created.desc()).limit(2).all()
+for x in stuff:
+    print(x.id)
 
 
 @app.route('/upload/<filename>', methods=["POST", "OPTIONS"])
