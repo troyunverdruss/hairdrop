@@ -5,6 +5,8 @@ import superagent from "superagent";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaCheckCircle, FaExternalLinkAlt } from "react-icons/fa";
 
+const remote_url = "http://10.41.33.2/hairdrop";
+
 interface Entry {
   id: number;
   type: "FILE" | "TEXT";
@@ -44,7 +46,7 @@ function App() {
     // Do something with the files
     acceptedFiles.forEach((file) => {
       superagent
-        .post(`http://localhost:8080/upload/${file.name}`)
+        .post(`${remote_url}/upload/${file.name}`)
         .send(file)
         .end(function (err, res) {
           loadData();
@@ -69,7 +71,7 @@ function App() {
     console.log("save");
     if (data) {
       superagent
-        .post(`http://localhost:8080/entry`)
+        .post(`${remote_url}/entry`)
         .send({ data: data })
         .end(function (err, res) {
           console.log(err, res);
@@ -81,7 +83,7 @@ function App() {
 
   const loadData = () => {
     superagent
-      .get(`http://localhost:8080/entries`)
+      .get(`${remote_url}/entries`)
       .then((res) => {
         setEntries(res.body);
         console.log(res.body);
@@ -100,7 +102,7 @@ function App() {
     if (e.type === "FILE") {
       body = (
         <li key={e.id}>
-          <a href={`http://localhost:8080/file/${e.data}`}>{e.data}</a>
+          <a href={`${remote_url}/file/${e.data}`}>{e.data}</a>
         </li>
       );
     } else {

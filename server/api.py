@@ -10,7 +10,7 @@ from models import Entry, EntryType
 database = Database()
 api = Blueprint('api', __name__)
 
-if 'upload_path' in os.environ:
+if 'UPLOAD_PATH' in os.environ:
     upload_path = os.environ['UPLOAD_PATH']
 else:
     upload_path = '/uploads'
