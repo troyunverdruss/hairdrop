@@ -5,7 +5,7 @@ import superagent from "superagent";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaCheckCircle, FaExternalLinkAlt } from "react-icons/fa";
 
-const remote_url = "http://10.41.33.2/hairdrop";
+const remote_url = "http://10.41.33.2:9000/hairdrop";
 
 interface Entry {
   id: number;
@@ -137,7 +137,7 @@ function App() {
         </form>
       </section>
       <section>
-        <ul>{entries && entries.map((e) => <DisplayEntry {...e} />)}</ul>
+        <ul>{entries && entries.map((e) => <DisplayEntry key={e.id} {...e} />)}</ul>
       </section>
     </div>
   );
