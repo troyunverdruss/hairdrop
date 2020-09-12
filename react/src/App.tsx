@@ -5,7 +5,7 @@ import superagent from "superagent";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaCheckCircle, FaExternalLinkAlt } from "react-icons/fa";
 
-const remote_url = "http://10.41.33.2:9000/hairdrop";
+const remote_url = "http://10.41.33.2/hairdrop-server";
 
 interface Entry {
   id: number;
