@@ -16,7 +16,7 @@ else:
     upload_path = '/uploads'
 
 
-@api.route(f'{upload_path}/<filename>', methods=["POST"])
+@api.route(f'/upload/<filename>', methods=["POST"])
 @cross_origin()
 def upload(filename):
     safe_filename = secure_filename(filename)
