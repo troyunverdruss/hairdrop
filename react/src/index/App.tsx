@@ -1,43 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import "./App.css";
-import { useDropzone } from "react-dropzone";
+import React, {useCallback, useEffect, useState} from "react";
+import "./App/App.css";
+import {useDropzone} from "react-dropzone";
 import superagent from "superagent";
-import CopyToClipboard from "react-copy-to-clipboard";
-import { FaCheckCircle, FaExternalLinkAlt } from "react-icons/fa";
+import {Entry, TextEntry} from "./App/TextEntry";
 
 const remote_url = "http://10.41.33.2/hairdrop-server";
-
-interface Entry {
-  id: number;
-  type: "FILE" | "TEXT";
-  data: string;
-  created: string;
-}
-
-const TextEntry = (entry: Entry) => {
-  const [visible, setVisible] = useState(false);
-
-  const onCopy = () => {
-    setVisible(true);
-    setTimeout(() => {
-      setVisible(false);
-    }, 2000);
-  };
-
-  return (
-    <CopyToClipboard text={entry.data} onCopy={onCopy}>
-      <span>
-        {entry.data}{" "}
-        {visible && (
-          <FaCheckCircle style={{ color: "green", display: "hidden" }} />
-        )}
-        <a href={entry.data}>
-          <FaExternalLinkAlt style={{ color: "grey" }} />
-        </a>
-      </span>
-    </CopyToClipboard>
-  );
-};
 
 function App() {
   const [entries, setEntries] = useState(new Array<Entry>());

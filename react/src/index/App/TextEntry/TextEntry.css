@@ -1,0 +1,14 @@
+.checkmark {
+  color: green;
+}
+
+.link {
+  color: grey;
+}
+
+.rowEntry {
+  width: 100%;
+  align-content: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
