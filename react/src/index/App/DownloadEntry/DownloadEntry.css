@@ -1,0 +1,18 @@
+.rowContainer {
+  display: flex;
+  /*height: 75px;*/
+  justify-content: flex-start;
+  min-height: 75px;
+}
+
+.rowEntry {
+  width: 75%;
+  /*height: 75px;*/
+  /*float: left;*/
+  /*overflow: hidden;*/
+  /*background-color: green;*/
+  /*line-height: 75px;*/
+  /*flex-grow: 9;*/
+  flex: 1 1;
+
+}

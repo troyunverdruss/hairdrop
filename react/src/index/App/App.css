@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+
+.display-entry-ul {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.display-entry-li {
+  /*padding-top: 20px;*/
+  /*padding-bottom: 20px;*/
+  list-style: none;
+  /*border-style: solid;*/
+  /*border-radius: 15px;*/
+  /*border-color: lightsteelblue;*/
+  /*border-width: 1px;*/
+  /*margin-bottom: 10px;*/
+  /*line-height: 75px;*/
+  /*height: 75px;*/
+
+}

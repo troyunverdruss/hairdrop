@@ -1,14 +1,45 @@
 .checkmark {
   color: green;
+
+  padding-left: 10px;
 }
 
 .link {
   color: grey;
 }
 
+.rowContainer {
+  display: flex;
+  /*height: 75px;*/
+  justify-content: flex-start;
+  min-height: 75px;
+  border-style: solid;
+  border-color: lightsteelblue;
+  border-width: 1px;
+  border-radius: 15px;
+}
+
 .rowEntry {
-  width: 100%;
-  align-content: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  width: 75%;
+  /*height: 75px;*/
+  /*float: left;*/
+  /*overflow: hidden;*/
+  /*background-color: green;*/
+  /*line-height: 75px;*/
+  /*flex-grow: 9;*/
+  flex: 1 1;
+  word-wrap: break-word;
+
+}
+
+.rowCheckAndLink {
+  width: 75px;
+  /*height: 75px;*/
+  /*line-height: 75px;*/
+  /*display: inline;*/
+  /*float: right;*/
+  /*background-color: red;*/
+  /*flex-grow: 1;*/
+  /*width: 10%;*/
+  flex:none;
 }

@@ -2,9 +2,11 @@ import React, {useCallback, useEffect, useState} from "react";
 import "./App/App.css";
 import {useDropzone} from "react-dropzone";
 import superagent from "superagent";
-import {Entry, TextEntry} from "./App/TextEntry";
+import {TextEntry} from "./App/TextEntry";
+import {Entry} from "./App/Entry";
+import {DownloadEntry} from "./App/DownloadEntry";
 
-const remote_url = "http://10.41.33.2/hairdrop-server";
+export const remote_url = "http://10.41.33.2/hairdrop-server";
 
 function App() {
   const [entries, setEntries] = useState(new Array<Entry>());
@@ -68,13 +70,13 @@ function App() {
     let body;
     if (e.type === "FILE") {
       body = (
-        <li key={e.id}>
-          <a href={`${remote_url}/file/${e.data}`}>{e.data}</a>
+        <li key={e.id} className="display-entry-li">
+          <DownloadEntry {...e} />
         </li>
       );
     } else {
       body = (
-        <li key={e.id}>
+        <li key={e.id} className="display-entry-li">
           <TextEntry {...e} />
         </li>
       );
@@ -104,7 +106,7 @@ function App() {
         </form>
       </section>
       <section>
-        <ul>{entries && entries.map((e) => <DisplayEntry key={e.id} {...e} />)}</ul>
+        <ul className="display-entry-ul">{entries && entries.map((e) => <DisplayEntry key={e.id} {...e} />)}</ul>
       </section>
     </div>
   );
